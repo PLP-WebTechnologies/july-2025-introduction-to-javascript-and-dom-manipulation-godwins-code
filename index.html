@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Fundamentals for Beginners</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4e54c8, #8a94b3);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #4e54c8;
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        h3 {
+            color: #6c63ff;
+            margin: 20px 0 10px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #6c63ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .input-group {
+            display: flex;
+            margin: 15px 0;
+            gap: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input {
+            flex: 1;
+        }
+
+        button {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #564fd4;
+        }
+
+        .output {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            min-height: 50px;
+        }
+
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .comment {
+            color: #75715e;
+        }
+
+        .keyword {
+            color: #f92672;
+        }
+
+        .function {
+            color: #66d9ef;
+        }
+
+        .string {
+            color: #a6e22e;
+        }
+
+        .dom-example {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+
+        .todo-text {
+            flex: 1;
+        }
+
+        .todo-delete {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .color-box {
+            width: 100%;
+            height: 100px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            transition: background-color 0.3s;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+            }
+
+            input,
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>JavaScript Fundamentals for Beginners</h1>
+        <p>Learn the building blocks of JavaScript with interactive examples</p>
+    </header>
+
+    <div class="intro">
+        <p>This interactive tutorial will help you understand JavaScript fundamentals through practical examples. Work
+            through each section to learn about variables, functions, loops, and DOM manipulation!</p>
+    </div>
+
+    <!-- Part 1: JavaScript Basics -->
+    <div class="section">
+        <h2>🎯 Part 1: JavaScript Basics</h2>
+        <p>Variables, data types, operators, and conditionals</p>
+
+        <div class="example">
+            <h3>Age Checker</h3>
+            <p>Enter your age to check if you're eligible to vote:</p>
+            <div class="input-group">
+                <input type="number" id="ageInput" placeholder="Enter your age">
+                <button onclick="checkAge()">Check Age</button>
+            </div>
+            <div id="ageResult" class="output">Result will appear here</div>
+        </div>
+
+        <div class="code-block">
+            <span class="comment">// This function checks if a person is old enough to vote</span><br>
+            <span class="keyword">function</span> <span class="function">checkAge</span>() {<br>
+            &nbsp;&nbsp;<span class="comment">// Get the age value from the input field</span><br>
+            &nbsp;&nbsp;<span class="keyword">let</span> age = <span class="function">parseInt</span>(document.<span
+                class="function">getElementById</span>(<span class="string">'ageInput'</span>).value);<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> resultElement = document.<span
+                class="function">getElementById</span>(<span class="string">'ageResult'</span>);<br>
+            <br>
+            &nbsp;&nbsp;<span class="comment">// Check if the input is valid</span><br>
+            &nbsp;&nbsp;<span class="keyword">if</span> (<span class="function">isNaN</span>(age)) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;resultElement.textContent = <span class="string">"Please enter a valid
+                number!"</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;resultElement.style.color = <span class="string">"red"</span>;<br>
+            &nbsp;&nbsp;} <span class="keyword">else if</span> (age >= 18) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;resultElement.textContent = <span class="string">"You are eligible to
+                vote!"</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;resultElement.style.color = <span class="string">"green"</span>;<br>
+            &nbsp;&nbsp;} <span class="keyword">else</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;resultElement.textContent = <span class="string">"You are not yet eligible to
+                vote."</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;resultElement.style.color = <span class="string">"orange"</span>;<br>
+            &nbsp;&nbsp;}<br>
+            }
+        </div>
+    </div>
+
+    <!-- Part 2: JavaScript Functions -->
+    <div class="section">
+        <h2>❤️ Part 2: JavaScript Functions</h2>
+        <p>Reusable blocks of logic for cleaner code</p>
+
+        <div class="example">
+            <h3>Temperature Converter</h3>
+            <p>Convert Fahrenheit to Celsius:</p>
+            <div class="input-group">
+                <input type="number" id="fahrenheitInput" placeholder="Fahrenheit">
+                <button onclick="convertTemperature()">Convert</button>
+            </div>
+            <div id="conversionResult" class="output">Celsius: </div>
+        </div>
+
+        <div class="example">
+            <h3>String Formatter</h3>
+            <p>Format your text:</p>
+            <div class="input-group">
+                <input type="text" id="formatInput" placeholder="Enter text">
+                <button onclick="formatText()">Format</button>
+            </div>
+            <div id="formatResult" class="output">Formatted: </div>
+        </div>
+
+        <div class="code-block">
+            <span class="comment">// Function to convert Fahrenheit to Celsius</span><br>
+            <span class="keyword">function</span> <span class="function">convertTemperature</span>() {<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> fahrenheit = <span
+                class="function">parseFloat</span>(document.<span class="function">getElementById</span>(<span
+                class="string">'fahrenheitInput'</span>).value);<br>
+            &nbsp;&nbsp;<span class="keyword">if</span> (<span class="function">isNaN</span>(fahrenheit)) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="string">"Please enter a valid number!"</span>);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>;<br>
+            &nbsp;&nbsp;}<br>
+            <br>
+            &nbsp;&nbsp;<span class="comment">// Convert using the formula: (F - 32) * 5/9</span><br>
+            &nbsp;&nbsp;<span class="keyword">let</span> celsius = (fahrenheit - 32) * 5/9;<br>
+            &nbsp;&nbsp;document.<span class="function">getElementById</span>(<span
+                class="string">'conversionResult'</span>).textContent = <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">`Celsius: ${celsius.toFixed(2)}°`</span>;<br>
+            }<br>
+            <br>
+            <span class="comment">// Function to format text with uppercase first letter</span><br>
+            <span class="keyword">function</span> <span class="function">formatText</span>() {<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> text = document.<span
+                class="function">getElementById</span>(<span class="string">'formatInput'</span>).value;<br>
+            &nbsp;&nbsp;<span class="keyword">if</span> (!text) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="string">"Please enter some text!"</span>);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>;<br>
+            &nbsp;&nbsp;}<br>
+            <br>
+            &nbsp;&nbsp;<span class="comment">// Format with uppercase first letter and add emoji</span><br>
+            &nbsp;&nbsp;<span class="keyword">let</span> formatted = text.<span class="function">charAt</span>(0).<span
+                class="function">toUpperCase</span>() + text.<span class="function">slice</span>(1) + <span
+                class="string">"
+                🎉"</span>;<br>
+            &nbsp;&nbsp;document.<span class="function">getElementById</span>(<span
+                class="string">'formatResult'</span>).textContent = <span class="string">`Formatted:
+                ${formatted}`</span>;<br>
+            }
+        </div>
+    </div>
+
+    <!-- Part 3: JavaScript Loops -->
+    <div class="section">
+        <h2>🔁 Part 3: JavaScript Loops</h2>
+        <p>Repetition and iteration for efficient coding</p>
+
+        <div class="example">
+            <h3>Multiplication Table</h3>
+            <p>Generate a multiplication table:</p>
+            <div class="input-group">
+                <input type="number" id="tableNumber" placeholder="Enter a number" value="5">
+                <button onclick="generateTable()">Generate</button>
+            </div>
+            <div id="multiplicationTable" class="output">Table will appear here</div>
+        </div>
+
+        <div class="example">
+            <h3>Countdown Timer</h3>
+            <p>Start a countdown from 10:</p>
+            <button onclick="startCountdown()">Start Countdown</button>
+            <div id="countdown" class="output">Countdown: </div>
+        </div>
+
+        <div class="code-block">
+            <span class="comment">// Function to generate multiplication table using a for loop</span><br>
+            <span class="keyword">function</span> <span class="function">generateTable</span>() {<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> number = <span class="function">parseInt</span>(document.<span
+                class="function">getElementById</span>(<span class="string">'tableNumber'</span>).value);<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> tableElement = document.<span
+                class="function">getElementById</span>(<span class="string">'multiplicationTable'</span>);<br>
+            <br>
+            &nbsp;&nbsp;<span class="keyword">if</span> (<span class="function">isNaN</span>(number)) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;tableElement.textContent = <span class="string">"Please enter a valid
+                number!"</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>;<br>
+            &nbsp;&nbsp;}<br>
+            <br>
+            &nbsp;&nbsp;<span class="comment">// Create the table using a for loop</span><br>
+            &nbsp;&nbsp;<span class="keyword">let</span> tableHTML = <span class="string">"Multiplication
+                Table:&lt;br&gt;"</span>;<br>
+            &nbsp;&nbsp;<span class="keyword">for</span> (<span class="keyword">let</span> i = 1; i <= 10; i++) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;tableHTML += <span class="string">`${number} × ${i} = ${number *
+                    i}&lt;br&gt;`</span>;<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;tableElement.innerHTML = tableHTML;<br>
+                }<br>
+                <br>
+                <span class="comment">// Function to start a countdown using a while loop</span><br>
+                <span class="keyword">function</span> <span class="function">startCountdown</span>() {<br>
+                &nbsp;&nbsp;<span class="keyword">let</span> count = 10;<br>
+                &nbsp;&nbsp;<span class="keyword">let</span> countdownElement = document.<span
+                    class="function">getElementById</span>(<span class="string">'countdown'</span>);<br>
+                <br>
+                &nbsp;&nbsp;<span class="comment">// Use setInterval to create a timer</span><br>
+                &nbsp;&nbsp;<span class="keyword">let</span> countdownInterval = <span
+                    class="function">setInterval</span>(() =>
+                {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;countdownElement.textContent = <span class="string">`Countdown:
+                    ${count}`</span>;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (count === 0) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">clearInterval</span>(countdownInterval);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;countdownElement.textContent = <span class="string">"Countdown:
+                    Blast off!
+                    🚀"</span>;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;} <span class="keyword">else</span> {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count--;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;}, 1000);<br>
+                }
+        </div>
+    </div>
+
+    <!-- Part 4: DOM Manipulation -->
+    <div class="section">
+        <h2>🌐 Part 4: DOM Manipulation</h2>
+        <p>Making web pages interactive with JavaScript</p>
+
+        <div class="example">
+            <h3>Dynamic List</h3>
+            <p>Add items to a dynamic list:</p>
+            <div class="input-group">
+                <input type="text" id="newItemInput" placeholder="Enter item">
+                <button onclick="addItem()">Add Item</button>
+            </div>
+            <div id="dynamicList" class="output">
+                <p>Your items will appear here:</p>
+            </div>
+        </div>
+
+        <div class="example">
+            <h3>Background Color Changer</h3>
+            <p>Click to change the box color:</p>
+            <div id="colorBox" class="color-box" style="background-color: #6c63ff;">
+                Current Color
+            </div>
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+
+        <div class="example">
+            <h3>Content Toggler</h3>
+            <p>Show/hide content with a toggle:</p>
+            <button onclick="toggleContent()">Toggle Secret Message</button>
+            <div id="secretMessage" class="output" style="display: none;">
+                🎉 Congratulations! You found the secret message! JavaScript DOM manipulation is powerful!
+            </div>
+        </div>
+
+        <div class="code-block">
+            <span class="comment">// Function to add item to dynamic list</span><br>
+            <span class="keyword">function</span> <span class="function">addItem</span>() {<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> input = document.<span
+                class="function">getElementById</span>(<span class="string">'newItemInput'</span>);<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> list = document.<span
+                class="function">getElementById</span>(<span class="string">'dynamicList'</span>);<br>
+            <br>
+            &nbsp;&nbsp;<span class="keyword">if</span> (!input.value) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="string">"Please enter an item!"</span>);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>;<br>
+            &nbsp;&nbsp;}<br>
+            <br>
+            &nbsp;&nbsp;<span class="comment">// Create a new list item element</span><br>
+            &nbsp;&nbsp;<span class="keyword">let</span> newItem = document.<span
+                class="function">createElement</span>(<span class="string">'div'</span>);<br>
+            &nbsp;&nbsp;newItem.className = <span class="string">'todo-item'</span>;<br>
+            &nbsp;&nbsp;newItem.innerHTML = <span class="string">`&lt;span
+                class="todo-text"&gt;${input.value}&lt;/span&gt;&lt;button class="todo-delete"
+                onclick="this.parentElement.remove()"&gt;Delete&lt;/button&gt;`</span>;<br>
+            <br>
+            &nbsp;&nbsp;<span class="comment">// Add the new item to the list</span><br>
+            &nbsp;&nbsp;list.<span class="function">appendChild</span>(newItem);<br>
+            &nbsp;&nbsp;input.value = <span class="string">''</span>;<br>
+            }<br>
+            <br>
+            <span class="comment">// Function to change background color randomly</span><br>
+            <span class="keyword">function</span> <span class="function">changeColor</span>() {<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> colors = [<span class="string">'#6c63ff'</span>, <span
+                class="string">'#4e54c8'</span>, <span class="string">'#ff6b6b'</span>, <span
+                class="string">'#47b881'</span>,
+            <span class="string">'#f7a54a'</span>];<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> colorBox = document.<span
+                class="function">getElementById</span>(<span class="string">'colorBox'</span>);<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> randomColor = colors[Math.<span
+                class="function">floor</span>(Math.<span class="function">random</span>() * colors.length)];<br>
+            &nbsp;&nbsp;colorBox.style.backgroundColor = randomColor;<br>
+            &nbsp;&nbsp;colorBox.textContent = <span class="string">`Color: ${randomColor}`</span>;<br>
+            }<br>
+            <br>
+            <span class="comment">// Function to toggle content visibility</span><br>
+            <span class="keyword">function</span> <span class="function">toggleContent</span>() {<br>
+            &nbsp;&nbsp;<span class="keyword">let</span> message = document.<span
+                class="function">getElementById</span>(<span class="string">'secretMessage'</span>);<br>
+            &nbsp;&nbsp;<span class="keyword">if</span> (message.style.display === <span class="string">'none'</span>)
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;message.style.display = <span class="string">'block'</span>;<br>
+            &nbsp;&nbsp;} <span class="keyword">else</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;message.style.display = <span class="string">'none'</span>;<br>
+            &nbsp;&nbsp;}<br>
+            }
+        </div>
+    </div>
+
+    <footer>
+        <p>JavaScript Fundamentals Assignment - Created for beginners</p>
+    </footer>
+
+    <script>
+        // Part 1: JavaScript Basics
+        function checkAge() {
+            let age = parseInt(document.getElementById('ageInput').value);
+            let resultElement = document.getElementById('ageResult');
+
+            if (isNaN(age)) {
+                resultElement.textContent = "Please enter a valid number!";
+                resultElement.style.color = "red";
+            } else if (age >= 18) {
+                resultElement.textContent = "You are eligible to vote!";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.textContent = "You are not yet eligible to vote.";
+                resultElement.style.color = "orange";
+            }
+        }
+
+        // Part 2: JavaScript Functions
+        function convertTemperature() {
+            let fahrenheit = parseFloat(document.getElementById('fahrenheitInput').value);
+            if (isNaN(fahrenheit)) {
+                alert("Please enter a valid number!");
+                return;
+            }
+
+            let celsius = (fahrenheit - 32) * 5 / 9;
+            document.getElementById('conversionResult').textContent = `Celsius: ${celsius.toFixed(2)}°`;
+        }
+
+        function formatText() {
+            let text = document.getElementById('formatInput').value;
+            if (!text) {
+                alert("Please enter some text!");
+                return;
+            }
+
+            // Format with uppercase first letter and add emoji
+            let formatted = text.charAt(0).toUpperCase() + text.slice(1) + " 🎉";
+            document.getElementById('formatResult').textContent = `Formatted: ${formatted}`;
+        }
+
+        // Part 3: JavaScript Loops
+        function generateTable() {
+            let number = parseInt(document.getElementById('tableNumber').value);
+            let tableElement = document.getElementById('multiplicationTable');
+
+            if (isNaN(number)) {
+                tableElement.textContent = "Please enter a valid number!";
+                return;
+            }
+
+            let tableHTML = "Multiplication Table:<br>";
+            for (let i = 1; i <= 10; i++) {
+                tableHTML += `${number} × ${i} = ${number * i}<br>`;
+            }
+
+            tableElement.innerHTML = tableHTML;
+        }
+
+        function startCountdown() {
+            let count = 10;
+            let countdownElement = document.getElementById('countdown');
+
+            let countdownInterval = setInterval(() => {
+                countdownElement.textContent = `Countdown: ${count}`;
+                if (count === 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.textContent = "Countdown: Blast off! 🚀";
+                } else {
+                    count--;
+                }
+            }, 1000);
+        }
+
+        // Part 4: DOM Manipulation
+        function addItem() {
+            let input = document.getElementById('newItemInput');
+            let list = document.getElementById('dynamicList');
+
+            if (!input.value) {
+                alert("Please enter an item!");
+                return;
+            }
+
+            let newItem = document.createElement('div');
+            newItem.className = 'todo-item';
+            newItem.innerHTML = `<span class="todo-text">${input.value}</span>
+                <button class="todo-delete" onclick="this.parentElement.remove()">Delete</button>`;
+
+            list.appendChild(newItem);
+            input.value = '';
+        }
+
+        function changeColor() {
+            let colors = ['#6c63ff', '#4e54c8', '#ff6b6b', '#47b881', '#f7a54a'];
+            let colorBox = document.getElementById('colorBox');
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            colorBox.style.backgroundColor = randomColor;
+            colorBox.textContent = `Color: ${randomColor}`;
+        }
+
+        function toggleContent() {
+            let message = document.getElementById('secretMessage');
+            if (message.style.display === 'none') {
+                message.style.display = 'block';
+            } else {
+                message.style.display = 'none';
+            }
+        }
+
+        // Initialize with some examples
+        window.onload = function () {
+            generateTable();
+        };
+    </script>
+</body>
+
+</html>
